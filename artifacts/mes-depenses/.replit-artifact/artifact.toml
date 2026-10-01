@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Mes Dépenses"
+description = "Application privée de gestion des dépenses personnelles, d’analyse des habitudes et de suivi des budgets, conçue pour mobile et ordinateur."
+version = "1.0.0"
+id = "artifacts/mes-depenses"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19131
+
+[services.development]
+run = "pnpm --filter @workspace/mes-depenses run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/mes-depenses", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/mes-depenses/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19131"
+BASE_PATH = "/"
