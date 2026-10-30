@@ -1,0 +1,50 @@
+.auth-backdrop {
+  overflow-x: hidden;
+}
+
+.auth-main {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+}
+
+.auth-main > div {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.auth-main .cl-rootBox {
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+.auth-main .cl-cardBox {
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: min(440px, 100%) !important;
+  min-width: 0 !important;
+}
+
+@media (max-width: 760px) {
+  .auth-main {
+    padding: 24px 16px;
+  }
+
+  .auth-mobile-brand {
+    max-width: 440px;
+  }
+}
+
+@media (max-width: 390px) {
+  .auth-main {
+    padding: 20px 12px;
+  }
+
+  .auth-mobile-brand {
+    margin-bottom: 18px;
+  }
+}

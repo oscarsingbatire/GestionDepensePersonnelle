@@ -4,6 +4,8 @@ import { QueryClient, QueryClientProvider, useQueryClient } from '@tanstack/reac
 import { ClerkProvider, Show, SignIn, SignUp, useClerk, useUser } from '@clerk/react';
 import { publishableKeyFromHost } from '@clerk/react/internal';
 import { shadcn } from '@clerk/themes';
+import { frFR } from '@clerk/localizations';
+import './auth.css';
 import {
   Activity, ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpRight, BarChart3, CalendarDays,
   Check, ChevronDown, ChevronRight, CircleHelp, Home,
@@ -40,7 +42,7 @@ const appearance = {
     colorInputForeground: '#20392f', colorNeutral: '#d9d5c9', fontFamily: "'DM Sans', sans-serif", borderRadius: '1rem',
   },
   elements: {
-    rootBox: 'w-full flex justify-center', cardBox: 'bg-[#fffdf7] rounded-2xl w-[440px] max-w-full overflow-hidden shadow-xl',
+    rootBox: '!w-full !max-w-full !min-w-0 flex justify-center', cardBox: 'bg-[#fffdf7] rounded-2xl !w-full !max-w-[440px] !min-w-0 overflow-hidden shadow-xl',
     card: '!shadow-none !border-0 !bg-transparent !rounded-none', footer: '!shadow-none !border-0 !bg-transparent !rounded-none',
     headerTitle: 'text-[#20392f] font-bold', headerSubtitle: 'text-[#6b7d72]', socialButtonsBlockButtonText: 'text-[#20392f]',
     formFieldLabel: 'text-[#20392f]', footerActionLink: 'text-[#244c3c] font-semibold', footerActionText: 'text-[#6b7d72]',
@@ -51,11 +53,6 @@ const appearance = {
     otpCodeFieldInput: 'bg-[#f5f0e6] border-[#d9d5c9]', formFieldRow: 'text-[#20392f]', main: 'text-[#20392f]',
   },
 };
-const frenchLocalization = {
-  signIn: { start: { title: 'Ravi de vous revoir', subtitle: 'Retrouvez votre espace de dépenses.' } },
-  signUp: { start: { title: 'Votre espace, à vous', subtitle: 'Commencez à suivre vos dépenses simplement.' } },
-};
-
 type IconType = typeof Home;
 const navItems: { href: string; label: string; icon: IconType }[] = [
   { href: '/dashboard', label: 'Vue d’ensemble', icon: Home }, { href: '/analysis', label: 'Analyses', icon: BarChart3 },
@@ -396,7 +393,7 @@ function SignUpPage() { return <AuthPage mode="sign-up" />; }
 function NotFound() { return <div className="not-found"><Brand/><div className="eyebrow">PAGE INTROUVABLE</div><h1 className="serif">On a perdu cette page.</h1><p>Le chemin demandé ne mène à aucune dépense connue.</p><Link href="/" className="btn btn-primary button" data-testid="link-not-found-home"><ArrowLeft size={16}/>Retour à l’accueil</Link></div>; }
 function ClerkRoutes() {
   const [,setLocation]=useLocation();
-  return <ClerkProvider publishableKey={clerkPubKey} proxyUrl={clerkProxyUrl} appearance={appearance} signInUrl={`${basePath}/sign-in`} signUpUrl={`${basePath}/sign-up`} localization={frenchLocalization}
+  return <ClerkProvider publishableKey={clerkPubKey} proxyUrl={clerkProxyUrl} appearance={appearance} signInUrl={`${basePath}/sign-in`} signUpUrl={`${basePath}/sign-up`} localization={frFR}
     routerPush={to=>setLocation(stripBase(to))} routerReplace={to=>setLocation(stripBase(to),{replace:true})}>
     <ClerkQueryClientCacheInvalidator />
     <Switch>
